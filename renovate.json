@@ -1,4 +1,13 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"]
+    "extends": ["config:base"],
+    "regexManagers": [
+        {
+            "fileMatch": ["^dep.txt$"],
+            "matchStrings": [
+                "image:\\s*('|\")(?<depName>.+?):(?<currentValue>.+?)(@(?<currentDigest>sha256:[a-f0-9]+))?('|\")"
+            ],
+            "datasourceTemplate": "docker"
+        }
+    ]
 }
